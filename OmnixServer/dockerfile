@@ -1,0 +1,4 @@
+FROM openjdk:13
+ARG JAR_FILE=target/SpringTest-0.0.1.jar
+COPY ${JAR_FILE} omnixserver.jar
+ENTRYPOINT ["java","-jar","/omnixserver.jar"]
