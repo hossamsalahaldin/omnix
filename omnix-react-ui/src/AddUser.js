@@ -9,7 +9,7 @@ class AddUser extends Component {
 
   userData= {
     userName:'hossam',
-    password:'1237'
+    password:'123'
   }
 
   emptyItem = {

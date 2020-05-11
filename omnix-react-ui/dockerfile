@@ -1,8 +1,12 @@
-FROM alpine:3.11
+FROM mhart/alpine-node:11
 ENV PATH /node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install bootstrap@4.1.3 -g --silent
+RUN npm install react-cookie@3.0.4 -g --silent
+RUN npm install react-router-dom@4.3.1 -g --silent
+RUN npm install reactstrap@6.5.0 -g --silent
+RUN npm install react-scripts --save
 COPY . ./
 CMD ["npm", "start"]
