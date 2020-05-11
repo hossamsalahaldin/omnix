@@ -22,8 +22,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private AuthenticationUserService authenticationUserService;
+	
 	
 	@PostMapping("/api/addUser")
 	public String addUser(@RequestBody User user) {
@@ -40,13 +39,6 @@ public class UserController {
 		return users;
 	}
 	
-	@RequestMapping(value = "/token/authUser", method = RequestMethod.POST, produces = {"application/json"})
-	@ResponseBody
-	public AuthenticationUser authenticateUser(@RequestBody AuthenticationUser authUser) {
-		System.out.println("User: " + authUser);
-		AuthenticationUser user = authenticationUserService.login(authUser.getUserName(), authUser.getPassword());
-		
-		return user;
-	}
+	
 
 }

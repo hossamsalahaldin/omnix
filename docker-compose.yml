@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  backend:
+    image: omnix/server
+    ports:
+      - "3001:8080"
+      
+  frontend:
+    image: omnix/ui
+    ports:
+      - "3000:3000"
+    tty: true

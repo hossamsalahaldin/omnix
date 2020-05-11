@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,6 +45,10 @@ public class AuthenticationUserService {
             return Optional.of(user);
         }
         return  Optional.empty();
+    }
+    
+    public List<AuthenticationUser> findAll(){
+    	return authenticationUserRepository.findAll();
     }
 }
 
