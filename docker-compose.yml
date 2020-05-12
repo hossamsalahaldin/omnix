@@ -1,13 +1,25 @@
 version: "3"
 
 services:
-  backend:
+  server:
     image: omnix/server
+    networks:
+      - omnix-network
+    build:
+      context: OmnixServer
+      dockerfile: dockerfile
     ports:
       - "3001:8080"
       
   frontend:
     image: omnix/ui
+    build:
+      context: omnix-react-ui
+      dockerfile: dockerfile
     ports:
       - "3000:3000"
+    networks:
+      - omnix-network
     tty: true
+networks:
+  omnix-network:
