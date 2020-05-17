@@ -27,13 +27,18 @@ class AddUser extends Component {
     this.state = {
       token: this.token,
       item: this.emptyItem,
-      user: this.userData
+      user: this.userData,
+	  errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.retrieveAuthentication = this.retrieveAuthentication.bind(this);
-this.retrieveAuthentication();
+    
   }
+  
+  componentWillMount(){ 
+    this.retrieveAuthentication = this.retrieveAuthentication.bind(this);
+	this.retrieveAuthentication();
+    } 
 
   handleChange(event) {
     const target = event.target;
@@ -59,7 +64,9 @@ this.retrieveAuthentication();
   }
 
   async handleSubmit(event) {
-    event.preventDefault();
+	  
+		
+		 event.preventDefault();
     this.state.item.token = this.state.token;
     console.log(this.state.item);
     const item = this.state.item;
@@ -69,13 +76,14 @@ this.retrieveAuthentication();
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': this.state.token
+        'token': this.state.token 
       },
       body: JSON.stringify(item),
     });
+			
+   
   }
-
-
+  
   render() {
 
     const {item} = this.state;
@@ -91,19 +99,19 @@ this.retrieveAuthentication();
           </FormGroup>
           <FormGroup>
             <Label for="age">Age</Label>
-            <Input type="number" minlength="1" maxlength="2" name="age" id="age" value={item.age} onChange={this.handleChange}
+            <Input type="number" min="1" minLength="1" maxLength="2" name="age" id="age" value={item.age} onChange={this.handleChange}
                   required="true"  />
           </FormGroup>
           <FormGroup>
             <Label for="email">Email</Label>
             <Input type="email" name="email" id="email" value={item.email} onChange={this.handleChange}
-                  required="true" />
+                  required="true" />  
           </FormGroup>
           <div className="row">
             <FormGroup className="col-md-4 mb-3">
               <Label for="phoneNumber">Phone Number</Label>
-              <Input type="number" minlength="8" maxlength="11" name="phoneNumber" id="phoneNumber" value={item.phoneNumber} onChange={this.handleChange}
-                  required="true"  />
+              <Input type="number" min="1" minlength="8" maxlength="11" name="phoneNumber" id="phoneNumber" value={item.phoneNumber} onChange={this.handleChange}
+                  required="true"  /> 
             </FormGroup>
             <FormGroup className="col-md-5 mb-3">
               <Label for="jobTitle">Job Title</Label>
@@ -113,7 +121,7 @@ this.retrieveAuthentication();
             <FormGroup className="col-md-3 mb-3">
               <Label for="jobDescription">Job Description</Label>
               <Input type="text" name="jobDescription" id="jobDescription" value={item.jobDescription} onChange={this.handleChange}
-                    required="true" />
+                    required="true" />	
             </FormGroup>
           </div>
           <FormGroup>
