@@ -3,6 +3,7 @@ package com.spring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,18 +26,18 @@ public class UserController {
 	
 	
 	@PostMapping("/api/addUser")
-	public String addUser(@RequestBody User user) {
+	public ResponseEntity addUser(@RequestBody User user) {
 		System.out.println("User: " + user);
 		User savedUser = userService.addUser(user);
 		System.out.println("savedUser: " + savedUser);
-		return "Successfull";
+		return ResponseEntity.ok().build();
 	}
 	
 	@GetMapping("/info/users")
 	@ResponseBody
-	public List<User> getAllUsers() {
+	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> users = userService.getAllUsers();
-		return users;
+		return ResponseEntity.ok(users);
 	}
 	
 	

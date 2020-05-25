@@ -27,9 +27,6 @@ public class AuthenticationUserService {
              user = authUser.get();
             user.setToken(token);
             authenticationUserRepository.save(user);
-        }else {
-        	user = new AuthenticationUser(userName,password);
-        	user.setToken("unauthorized");
         }
 
         return user;
